@@ -40,14 +40,7 @@ pipeline {
                sh 'trivy fs --format table --output trivy-fs-output.txt .'
             }
         } 
-        stage('Sonar Analysis') {
-            steps {
-               withSonarQubeEnv('sonar') {
-                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=SpringBootApp -Dsonar.projectKey=SpringBootApp \
-                                                       -Dsonar.java.binaries=. -Dsonar.exclusions=**/trivy-fs-output.txt '''
-               }
-            }
-        } 
+        
     }
 
 }      
