@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main' , url: 'https://github.com/Nasreenshaik267/cicd.git'
+                git branch: 'main' , url: 'https://github.com/Nasreenshaik267/cicd.git
             }
         }
         stage('Versioning') {
