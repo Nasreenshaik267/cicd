@@ -54,7 +54,7 @@ pipeline {
             steps {
                script{
                 
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube-token'
+                waitForQualityGate abortPipeline: false, credentialsId:'sonarqube-token'
                 
                }
             }
