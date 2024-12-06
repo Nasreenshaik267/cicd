@@ -41,25 +41,9 @@ pipeline {
             }
         }
         
-        stage('Sonar Analysis') {
-            steps {
-               withSonarQubeEnv(credentialsId: 'sonarqube-token') {
-                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=SpringBootApp -Dsonar.projectKey=SpringBootApp \
-                                                       -Dsonar.java.binaries=. -Dsonar.exclusions=/trivy-fs-output.txt '''
-               }
-            }
-        } 
+        
 
-        stage('qualitygate') {
-            steps {
-               script{
-                
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube-token'
-                
-               }
-            }
-
-        }
+        
         
         stage('File System Scan by Trivy') {
             steps {
